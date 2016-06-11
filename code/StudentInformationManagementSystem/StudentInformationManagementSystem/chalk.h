@@ -27,6 +27,7 @@
 #define CHALK_INVERT     "\e[7m"
 #define CHALK_BLANK      "\e[8m"
 
+typedef unsigned short ushort;
 
 
 // -----------------------------------------------------------------
@@ -39,24 +40,24 @@
  *                        是否有下滑下，是否有高亮等等
  */
 struct chalk {
-    unsigned short forecolor; // 前景色
-    unsigned short backcolor; // 背景色
-    unsigned short highlight; // 高亮
-    unsigned short underline; // 下划线
-    unsigned short flash; // 闪烁
-    unsigned short invert; // 反显
-    unsigned short blank; // 消隐
-    unsigned short _initialized; // 是否初始化过
+    ushort forecolor; // 前景色
+    ushort backcolor; // 背景色
+    ushort highlight; // 高亮
+    ushort underline; // 下划线
+    ushort flash; // 闪烁
+    ushort invert; // 反显
+    ushort blank; // 消隐
+    ushort _initialized; // 是否初始化过
     // 函数定义
-    unsigned short (*setHighlight)(struct chalk *, unsigned short);
-    unsigned short (*setUnderline)(struct chalk *, unsigned short);
-    unsigned short (*setFlash)(struct chalk *, unsigned short);
-    unsigned short (*setInvert)(struct chalk *, unsigned short);
-    unsigned short (*setBlank)(struct chalk *, unsigned short);
-    unsigned short (*setForecolor)(struct chalk *, char *);
-    unsigned short (*setBackcolor)(struct chalk *, char *);
-    unsigned short (*isInitialized)(struct chalk *);
-    unsigned short (*print)(struct chalk *, char *);
+    ushort (*setHighlight)(struct chalk *, ushort);
+    ushort (*setUnderline)(struct chalk *, ushort);
+    ushort (*setFlash)(struct chalk *, ushort);
+    ushort (*setInvert)(struct chalk *, ushort);
+    ushort (*setBlank)(struct chalk *, ushort);
+    ushort (*setForecolor)(struct chalk *, char *);
+    ushort (*setBackcolor)(struct chalk *, char *);
+    ushort (*isInitialized)(struct chalk *);
+    ushort (*print)(struct chalk *, char *);
 };
 
 typedef struct chalk Chalk;
@@ -74,7 +75,7 @@ typedef struct chalk Chalk;
  
  - returns: 初始化之后的chalk实例
  */
-unsigned short initialize_chalk(Chalk *);
+ushort initialize_chalk(Chalk *);
 
 /**
  *  打印错误样式
@@ -83,7 +84,7 @@ unsigned short initialize_chalk(Chalk *);
  *
  *  @return 1表示成功，0表示失败
  */
-unsigned short printError(char *);
+ushort printError(char *);
 
 /**
  *  打印信息
@@ -92,7 +93,7 @@ unsigned short printError(char *);
  *
  *  @return 1表示成功，0表示失败
  */
-unsigned short printInfo(char *);
+ushort printInfo(char *);
 
 /**
  *  打印重要信息样式
@@ -101,5 +102,5 @@ unsigned short printInfo(char *);
  *
  *  @return 1表示成功，0表示失败
  */
-unsigned short printImportant(char *);
+ushort printImportant(char *);
 #endif /* chalk_h */

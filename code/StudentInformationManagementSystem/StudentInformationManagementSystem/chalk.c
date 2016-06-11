@@ -15,8 +15,8 @@
  *
  *  @return 返回结果值
  */
-unsigned short mapColorToResult(char *color,
-                             unsigned short isForeColor)
+ushort mapColorToResult(char *color,
+                        ushort isForeColor)
 {
     if (strcmp(color, "black") == 0) {
         return (30 + (isForeColor?0:10));
@@ -52,7 +52,7 @@ unsigned short mapColorToResult(char *color,
  *
  *  @return 如果已经被初始化，则返回1，否则返回0
  */
-unsigned short isInitialized_chalk(Chalk *chalk)
+ushort isInitialized_chalk(Chalk *chalk)
 {
     if (chalk != NULL) {
         return (chalk->_initialized == 1)?1:0;
@@ -69,8 +69,8 @@ unsigned short isInitialized_chalk(Chalk *chalk)
  *
  *  @return 1表示操作成功，0表示操作失败
  */
-unsigned short setHighlight_chalk(Chalk *chalk,
-                                  unsigned short highlight)
+ushort setHighlight_chalk(Chalk *chalk,
+                          ushort highlight)
 {
     if (chalk != NULL && chalk->isInitialized(chalk)) {
         chalk->highlight = highlight;
@@ -88,8 +88,8 @@ unsigned short setHighlight_chalk(Chalk *chalk,
  *
  *  @return 1表示操作成功，0表示操作失败
  */
-unsigned short setUnderline_chalk(Chalk *chalk,
-                                  unsigned short underline)
+ushort setUnderline_chalk(Chalk *chalk,
+                          ushort underline)
 {
     if (chalk != NULL && chalk->isInitialized(chalk)) {
         chalk->underline = underline;
@@ -107,8 +107,8 @@ unsigned short setUnderline_chalk(Chalk *chalk,
  *
  *  @return 1表示操作成功，0表示操作失败
  */
-unsigned short setFlash_chalk(Chalk *chalk,
-                              unsigned short flash)
+ushort setFlash_chalk(Chalk *chalk,
+                      ushort flash)
 {
     if (chalk != NULL && chalk->isInitialized(chalk)) {
         chalk->flash = flash;
@@ -126,8 +126,8 @@ unsigned short setFlash_chalk(Chalk *chalk,
  *
  *  @return 1表示操作成功，0表示操作失败
  */
-unsigned short setInvert_chalk(Chalk *chalk,
-                               unsigned short invert)
+ushort setInvert_chalk(Chalk *chalk,
+                       ushort invert)
 {
     if (chalk != NULL && chalk->isInitialized(chalk)) {
         chalk->invert = invert;
@@ -145,8 +145,8 @@ unsigned short setInvert_chalk(Chalk *chalk,
  *
  *  @return 1表示操作成功，0表示操作失败
  */
-unsigned short setBlank_chalk(Chalk *chalk,
-                              unsigned short blank)
+ushort setBlank_chalk(Chalk *chalk,
+                      ushort blank)
 {
     if (chalk != NULL && chalk->isInitialized(chalk)) {
         chalk->blank = blank;
@@ -164,8 +164,8 @@ unsigned short setBlank_chalk(Chalk *chalk,
  *
  *  @return 1表示操作成功，0表示操作失败
  */
-unsigned short setForecolor_chalk(Chalk *chalk,
-                                  char* color)
+ushort setForecolor_chalk(Chalk *chalk,
+                          char* color)
 {
     if (chalk != NULL && chalk->isInitialized(chalk)) {
         chalk->forecolor = mapColorToResult(color, 1);
@@ -183,8 +183,8 @@ unsigned short setForecolor_chalk(Chalk *chalk,
  *
  *  @return 1表示操作成功，0表示操作失败
  */
-unsigned short setBackcolor_chalk(Chalk *chalk,
-                                  char* color)
+ushort setBackcolor_chalk(Chalk *chalk,
+                          char* color)
 {
     if (chalk != NULL && chalk->isInitialized(chalk)) {
         chalk->backcolor = mapColorToResult(color, 0);
@@ -202,8 +202,8 @@ unsigned short setBackcolor_chalk(Chalk *chalk,
  *
  *  @return 1表示操作成功，0表示操作失败
  */
-unsigned short print_chalk(Chalk *chalk,
-                           char *message)
+ushort print_chalk(Chalk *chalk,
+                   char *message)
 {
     char res[512]      = "";
     char forecolor[20] = "";
@@ -259,7 +259,7 @@ unsigned short print_chalk(Chalk *chalk,
  *  @params:
  - returns: void
  */
-unsigned short initialize_chalk(Chalk *chalk)
+ushort initialize_chalk(Chalk *chalk)
 {
     if ((chalk != NULL) && (chalk->_initialized != 1)) {
         // 不为空指针，且未被初始化
@@ -296,7 +296,7 @@ unsigned short initialize_chalk(Chalk *chalk)
  *
  *  @return 1表示成功，0表示失败
  */
-unsigned short printError(char *message)
+ushort printError(char *message)
 {
     Chalk *chalk = (Chalk *)malloc(sizeof(Chalk));
     initialize_chalk(chalk);
@@ -313,7 +313,7 @@ unsigned short printError(char *message)
  *
  *  @return 1表示成功，0表示失败
  */
-unsigned short printInfo(char *message)
+ushort printInfo(char *message)
 {
     Chalk *chalk = (Chalk *)malloc(sizeof(Chalk));
     initialize_chalk(chalk);
@@ -329,7 +329,7 @@ unsigned short printInfo(char *message)
  *
  *  @return 1表示成功，0表示失败
  */
-unsigned short printImportant(char *message)
+ushort printImportant(char *message)
 {
     Chalk *chalk = (Chalk *)malloc(sizeof(Chalk));
     initialize_chalk(chalk);
