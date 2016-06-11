@@ -11,12 +11,9 @@
 #include <string.h>
 #include "chalk.h"
 
-#define INFO "hello !"
-
 int main(int argc, const char * argv[]) {
-    Chalk *chalk = (Chalk *)malloc(sizeof(Chalk));
-    initialize_chalk(chalk);
-    chalk->setForecolor(chalk, "yellow");
-    chalk->print(chalk, "hello world!\n");
+    printError("I am angree!");
+    printInfo("My name is Tom Tang");
+    printImportant("My dream is to be a front-end engineer!");
     return 0;
 }

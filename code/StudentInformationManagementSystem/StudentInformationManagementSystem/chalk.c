@@ -5,10 +5,6 @@
 //  Created by blackcater on 16/6/11.
 //  Copyright © 2016年 blackcater. All rights reserved.
 //
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
 #include "chalk.h"
 
 /**
@@ -224,30 +220,31 @@ unsigned short print_chalk(Chalk *chalk,
         if (chalk->backcolor != 0) {
             sprintf(backcolor, CHALK_START "%d" CHALK_END, chalk->backcolor);
         }
-        if (chalk->highlight != 0) {
+        if (chalk->highlight == 1) {
             sprintf(highlight, CHALK_HIGHLIGHT);
         }
-        if (chalk->underline != 0) {
+        if (chalk->underline == 1) {
             sprintf(underline, CHALK_UNDERLINE);
         }
-        if (chalk->flash != 0) {
+        if (chalk->flash == 1) {
             sprintf(flash, CHALK_FLASH);
         }
-        if (chalk->invert != 0) {
+        if (chalk->invert == 1) {
             sprintf(invert, CHALK_INVERT);
         }
-        if (chalk->blank != 0) {
+        if (chalk->blank == 1) {
             sprintf(blank, CHALK_BLANK);
         }
-        strcmp(res, highlight);
+        strcat(res, forecolor);
+        strcat(res, backcolor);
+        strcat(res, highlight);
         strcat(res, underline);
         strcat(res, flash);
         strcat(res, invert);
         strcat(res, blank);
-        strcat(res, forecolor);
-        strcat(res, backcolor);
         strcat(res, message);
         strcat(res, CHALK_ATTR_CLOSE);
+        strcat(res, "\n");
         printf("%s" , res);
         return 1;
     } else {
@@ -290,4 +287,53 @@ unsigned short initialize_chalk(Chalk *chalk)
         fprintf(stderr, "Error : Chalk could be initialized!");
         return 0;
     }
+}
+
+/**
+ *  打印错误样式
+ *
+ *  @param char 错误信息
+ *
+ *  @return 1表示成功，0表示失败
+ */
+unsigned short printError(char *message)
+{
+    Chalk *chalk = (Chalk *)malloc(sizeof(Chalk));
+    initialize_chalk(chalk);
+    chalk->setForecolor(chalk, "red");
+    chalk->setHighlight(chalk, 1);
+    chalk->setInvert(chalk, 1);
+    return chalk->print(chalk, message);
+}
+
+/**
+ *  打印信息
+ *
+ *  @param char 基本信息
+ *
+ *  @return 1表示成功，0表示失败
+ */
+unsigned short printInfo(char *message)
+{
+    Chalk *chalk = (Chalk *)malloc(sizeof(Chalk));
+    initialize_chalk(chalk);
+    chalk->setForecolor(chalk, "green");
+    chalk->setUnderline(chalk, 1);
+    return chalk->print(chalk, message);
+}
+
+/**
+ *  打印重要信息样式
+ *
+ *  @param char 打印重要信息
+ *
+ *  @return 1表示成功，0表示失败
+ */
+unsigned short printImportant(char *message)
+{
+    Chalk *chalk = (Chalk *)malloc(sizeof(Chalk));
+    initialize_chalk(chalk);
+    chalk->setForecolor(chalk, "darkgreen");
+    chalk->setHighlight(chalk, 1);
+    return chalk->print(chalk, message);
 }

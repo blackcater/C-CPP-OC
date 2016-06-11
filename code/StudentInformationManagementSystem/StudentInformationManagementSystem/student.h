@@ -11,4 +11,16 @@
 
 #include <stdio.h>
 
+struct student {
+    char *std_id;
+    char *name;
+    char *address;
+    unsigned short age;
+    unsigned short gender;
+};
+
+typedef struct student Student;
+
+
+
 #endif /* student_h */

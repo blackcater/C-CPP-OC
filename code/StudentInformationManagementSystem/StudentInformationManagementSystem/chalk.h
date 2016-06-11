@@ -70,7 +70,36 @@ typedef struct chalk Chalk;
  */
 // -----------------------------------------------------------------
 /**
- *  struct chalk数据初始化函数
+ struct chalk数据初始化函数
+ 
+ - returns: 初始化之后的chalk实例
  */
-unsigned short initialize_chalk(struct chalk *);
+unsigned short initialize_chalk(Chalk *);
+
+/**
+ *  打印错误样式
+ *
+ *  @param char 错误信息
+ *
+ *  @return 1表示成功，0表示失败
+ */
+unsigned short printError(char *);
+
+/**
+ *  打印信息
+ *
+ *  @param char 基本信息
+ *
+ *  @return 1表示成功，0表示失败
+ */
+unsigned short printInfo(char *);
+
+/**
+ *  打印重要信息样式
+ *
+ *  @param char 打印重要信息
+ *
+ *  @return 1表示成功，0表示失败
+ */
+unsigned short printImportant(char *);
 #endif /* chalk_h */
