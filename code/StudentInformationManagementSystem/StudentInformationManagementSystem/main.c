@@ -9,11 +9,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "chalk.h"
+#include "App.h"
 
 int main(int argc, const char * argv[]) {
-    printError("I am angree!");
-    printInfo("My name is Tom Tang");
-    printImportant("My dream is to be a front-end engineer!");
+    
+    App *app = createApp();
+    app->start();
     return 0;
 }

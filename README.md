@@ -33,3 +33,12 @@ chalk->setForecolor(chalk, "green");
 chalk->print(chalk, message); // 打印输出
 ```
 
+## 学生信息管理系统
+
+基于纯C，面向过程实现，完成进度`40%`
+
+![show1-1](./note/_image/show2-1.png)
+
+
+
+![show1-1](./note/_image/show2-2.png)

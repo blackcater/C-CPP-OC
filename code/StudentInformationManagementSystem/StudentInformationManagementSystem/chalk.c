@@ -55,9 +55,9 @@ ushort mapColorToResult(char *color,
 ushort isInitialized_chalk(Chalk *chalk)
 {
     if (chalk != NULL) {
-        return (chalk->_initialized == 1)?1:0;
+        return (chalk->_initialized == 1)?TRUE:FALSE;
     } else {
-        return 0;
+        return FALSE;
     }
 }
 
@@ -74,9 +74,9 @@ ushort setHighlight_chalk(Chalk *chalk,
 {
     if (chalk != NULL && chalk->isInitialized(chalk)) {
         chalk->highlight = highlight;
-        return 1;
+        return TRUE;
     } else {
-        return 0;
+        return FALSE;
     }
 }
 
@@ -93,9 +93,9 @@ ushort setUnderline_chalk(Chalk *chalk,
 {
     if (chalk != NULL && chalk->isInitialized(chalk)) {
         chalk->underline = underline;
-        return 1;
+        return TRUE;
     } else {
-        return 0;
+        return FALSE;
     }
 }
 
@@ -112,9 +112,9 @@ ushort setFlash_chalk(Chalk *chalk,
 {
     if (chalk != NULL && chalk->isInitialized(chalk)) {
         chalk->flash = flash;
-        return 1;
+        return TRUE;
     } else {
-        return 0;
+        return FALSE;
     }
 }
 
@@ -131,9 +131,9 @@ ushort setInvert_chalk(Chalk *chalk,
 {
     if (chalk != NULL && chalk->isInitialized(chalk)) {
         chalk->invert = invert;
-        return 1;
+        return TRUE;
     } else {
-        return 0;
+        return FALSE;
     }
 }
 
@@ -150,9 +150,9 @@ ushort setBlank_chalk(Chalk *chalk,
 {
     if (chalk != NULL && chalk->isInitialized(chalk)) {
         chalk->blank = blank;
-        return 1;
+        return TRUE;
     } else {
-        return 0;
+        return FALSE;
     }
 }
 
@@ -169,9 +169,9 @@ ushort setForecolor_chalk(Chalk *chalk,
 {
     if (chalk != NULL && chalk->isInitialized(chalk)) {
         chalk->forecolor = mapColorToResult(color, 1);
-        return 1;
+        return TRUE;
     } else {
-        return 0;
+        return FALSE;
     }
 }
 
@@ -188,9 +188,9 @@ ushort setBackcolor_chalk(Chalk *chalk,
 {
     if (chalk != NULL && chalk->isInitialized(chalk)) {
         chalk->backcolor = mapColorToResult(color, 0);
-        return 1;
+        return TRUE;
     } else {
-        return 0;
+        return FALSE;
     }
 }
 
@@ -203,7 +203,8 @@ ushort setBackcolor_chalk(Chalk *chalk,
  *  @return 1表示操作成功，0表示操作失败
  */
 ushort print_chalk(Chalk *chalk,
-                   char *message)
+                   char *message,
+                   ushort newline)
 {
     char res[512]      = "";
     char forecolor[20] = "";
@@ -244,11 +245,15 @@ ushort print_chalk(Chalk *chalk,
         strcat(res, blank);
         strcat(res, message);
         strcat(res, CHALK_ATTR_CLOSE);
-        strcat(res, "\n");
+        if (newline) {
+            strcat(res, "\n");
+        } else {
+            strcat(res, "");
+        }
         printf("%s" , res);
-        return 1;
+        return TRUE;
     } else {
-        return 0;
+        return FALSE;
     }
 }
 
@@ -281,11 +286,11 @@ ushort initialize_chalk(Chalk *chalk)
         chalk->setForecolor  = &setForecolor_chalk;
         chalk->setBackcolor  = &setBackcolor_chalk;
         chalk->print         = &print_chalk;
-        return 1;
+        return TRUE;
     } else {
         // 输出错误信息
         fprintf(stderr, "Error : Chalk could be initialized!");
-        return 0;
+        return FALSE;
     }
 }
 
@@ -303,8 +308,26 @@ ushort printError(char *message)
     chalk->setForecolor(chalk, "red");
     chalk->setHighlight(chalk, 1);
     chalk->setInvert(chalk, 1);
-    return chalk->print(chalk, message);
+    return chalk->print(chalk, message, 0);
 }
+
+/**
+ *  打印错误样式
+ *
+ *  @param char 错误信息
+ *
+ *  @return 1表示成功，0表示失败
+ */
+ushort printlnError(char *message)
+{
+    Chalk *chalk = (Chalk *)malloc(sizeof(Chalk));
+    initialize_chalk(chalk);
+    chalk->setForecolor(chalk, "red");
+    chalk->setHighlight(chalk, 1);
+    chalk->setInvert(chalk, 1);
+    return chalk->print(chalk, message, 0);
+}
+
 
 /**
  *  打印信息
@@ -319,8 +342,25 @@ ushort printInfo(char *message)
     initialize_chalk(chalk);
     chalk->setForecolor(chalk, "green");
     chalk->setUnderline(chalk, 1);
-    return chalk->print(chalk, message);
+    return chalk->print(chalk, message, 0);
 }
+
+/**
+ *  打印信息
+ *
+ *  @param char 基本信息
+ *
+ *  @return 1表示成功，0表示失败
+ */
+ushort printlnInfo(char *message)
+{
+    Chalk *chalk = (Chalk *)malloc(sizeof(Chalk));
+    initialize_chalk(chalk);
+    chalk->setForecolor(chalk, "green");
+    chalk->setUnderline(chalk, 1);
+    return chalk->print(chalk, message, 1);
+}
+
 
 /**
  *  打印重要信息样式
@@ -335,5 +375,21 @@ ushort printImportant(char *message)
     initialize_chalk(chalk);
     chalk->setForecolor(chalk, "darkgreen");
     chalk->setHighlight(chalk, 1);
-    return chalk->print(chalk, message);
+    return chalk->print(chalk, message, 0);
+}
+
+/**
+ *  打印重要信息样式
+ *
+ *  @param char 打印重要信息
+ *
+ *  @return 1表示成功，0表示失败
+ */
+ushort printlnImportant(char *message)
+{
+    Chalk *chalk = (Chalk *)malloc(sizeof(Chalk));
+    initialize_chalk(chalk);
+    chalk->setForecolor(chalk, "darkgreen");
+    chalk->setHighlight(chalk, 1);
+    return chalk->print(chalk, message, 1);
 }

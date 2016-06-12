@@ -27,6 +27,9 @@
 #define CHALK_INVERT     "\e[7m"
 #define CHALK_BLANK      "\e[8m"
 
+#define TRUE 1
+#define FALSE 0
+
 typedef unsigned short ushort;
 
 
@@ -57,7 +60,7 @@ struct chalk {
     ushort (*setForecolor)(struct chalk *, char *);
     ushort (*setBackcolor)(struct chalk *, char *);
     ushort (*isInitialized)(struct chalk *);
-    ushort (*print)(struct chalk *, char *);
+    ushort (*print)(struct chalk *, char *, ushort);
 };
 
 typedef struct chalk Chalk;
@@ -86,6 +89,8 @@ ushort initialize_chalk(Chalk *);
  */
 ushort printError(char *);
 
+ushort printlnError(char *);
+
 /**
  *  打印信息
  *
@@ -95,6 +100,8 @@ ushort printError(char *);
  */
 ushort printInfo(char *);
 
+ushort printlnInfo(char *);
+
 /**
  *  打印重要信息样式
  *
@@ -103,4 +110,6 @@ ushort printInfo(char *);
  *  @return 1表示成功，0表示失败
  */
 ushort printImportant(char *);
+
+ushort printlnImportant(char *);
 #endif /* chalk_h */
