@@ -35,6 +35,10 @@ typedef struct list List;
 
 Node *createNode(Student *);
 
+ushort free_node(Node *);
+
 List *createList(Node *);
+
+ushort free_list(List *);
 
 #endif /* list_h */

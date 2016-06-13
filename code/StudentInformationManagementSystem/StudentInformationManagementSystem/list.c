@@ -49,6 +49,11 @@ ushort add_list(List *list, Node *node)
     if (list != NULL) {
         Node *origin = list->head;
         while(origin->next != NULL) {
+            Node *curr = origin->next;
+            Student *student = curr->data;
+            if (strcmp(student->std_id, node->data->std_id) == 0) {
+                return 2;
+            }
             origin = origin->next;
         }
         origin->next = node;
@@ -191,4 +196,38 @@ List *createList(Node *head)
         tmp->head = createNode(NULL);
     }
     return tmp;
+}
+
+/**
+ *  <#Description#>
+ *
+ *  @param node <#node description#>
+ *
+ *  @return <#return value description#>
+ */
+ushort free_node(Node *node)
+{
+    free(node->data);
+    free(node);
+    return 1;
+}
+
+/**
+ *  <#Description#>
+ *
+ *  @param list <#list description#>
+ *
+ *  @return <#return value description#>
+ */
+ushort free_list(List *list)
+{
+    Node *head = list->head;
+    Node *curr = NULL;
+    while ((curr = head->next) != NULL) {
+        free(curr);
+        head = head->next;
+    }
+    free(list->head);
+    free(list);
+    return 1;
 }

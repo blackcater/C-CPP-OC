@@ -14,7 +14,12 @@
 #include <string.h>
 #include "chalk.h"
 #include "list.h"
+#include "message.h"
+#include "function_c1.h"
+#include "function_c2.h"
 #include "function_c5.h"
+#include "fucntion_c6.h"
+#include "function_c7.h"
 
 typedef unsigned short ushort;
 
@@ -23,7 +28,6 @@ struct app {
 };
 
 typedef struct app App;
-
 ushort initialize_app(App *);
 
 App *createApp();

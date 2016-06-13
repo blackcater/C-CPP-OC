@@ -1,13 +1,13 @@
 //
-//  function_c5.h
+//  function_c7.h
 //  StudentInformationManagementSystem
 //
-//  Created by blackcater on 16/6/12.
+//  Created by blackcater on 16/6/13.
 //  Copyright © 2016年 blackcater. All rights reserved.
 //
 
-#ifndef function_c5_h
-#define function_c5_h
+#ifndef function_c7_h
+#define function_c7_h
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,6 +17,6 @@
 #include "list.h"
 #include "message.h"
 
-void function_c5(List *);
+ushort function_c7(List *);
 
-#endif /* function_c5_h */
+#endif /* function_c7_h */

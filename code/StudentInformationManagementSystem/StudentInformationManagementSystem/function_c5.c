@@ -32,25 +32,23 @@ void printAllStudentInfo(List *list)
  *  @param total 总页数
  *  @param page  当前页数
  */
-void printAllStudentInfoMenu(ushort total, ushort page)
+void printAllStudentInfoMenu(ushort total, ushort page, ushort size)
 {
-    if (total == 0) {
+    if (size == 0) {
         printf("\t没有数据\n");
         printf("\t-------------------------------------------\n");
         printf("\n");
         printf("\tq/Q: ");printlnInfo("返回菜单页面");
-    }
-    if (total == 1) {
+    } else if (total == 1) {
         printf("\t-------------------------------------------\n");
         printf("\ts/S: ");printlnInfo("保存结果");
         printf("\tq/Q: ");printlnInfo("返回菜单页面");
-    }
-    if (page == 1) {
+    } else if (page == 1 && total >= 2) {
         printf("\t-------------------------------------------\n");
         printf("\tt/T: ");printInfo("最后一页\t");printf("n/N: ");printlnInfo("下一页");
         printf("\ts/S: ");printlnInfo("保存结果");
         printf("\tq/Q: ");printlnInfo("返回菜单页面");
-    } else if (page == total) {
+    } else if (page == total && total >= 2) {
         printf("\t-------------------------------------------\n");
         printf("\ta/A: ");printInfo("最前一页\t");printf("p/P: ");printlnInfo("前一页");
         printf("\ts/S: ");printlnInfo("保存结果");
@@ -63,7 +61,11 @@ void printAllStudentInfoMenu(ushort total, ushort page)
         printf("\tq/Q: ");printlnInfo("返回菜单页面");
     }
     char str[40];
-    sprintf(str, "\t请选择(%d/%d): ", page, total);
+    if (size != 0) {
+        sprintf(str, "\t请选择(%d/%d): ", page, total);
+    } else {
+        sprintf(str, "\t请选择: ");
+    }
     printImportant(str);
 }
 
@@ -112,17 +114,22 @@ List *pagination(List *list, ushort index)
  *
  *  @param list 需要的学生信息链表
  */
-void function_5(List *list)
+void function_c5(List *list)
 {
     char choose[10];
     ushort back  = FALSE;
     ushort size  = list->size(list);// 数据总数
     ushort total = (floor(size/3)+1);// 页数
     ushort page  = 1;// 当前页
+    Message *msg = createMessage(NULL, NULL);
     while (TRUE && (!back)) {
         system("clear");
         printAllStudentInfo(pagination(list, page));
-        printAllStudentInfoMenu(total, page);
+        // 打印信息
+        msg->printMessage(msg);
+        printAllStudentInfoMenu(total, page, size);
+        // 清空信息
+        msg->setMessage(msg, "");
         scanf("%s", choose);
         switch (choose[0]) {
             case 'q':
@@ -145,17 +152,23 @@ void function_5(List *list)
             case 'N':
                 if (page >= 1 && page < total) {
                     page++;
+                } else {
+                    msg->setMessage(msg, "\t已经是最后一页，没有更多的数据!");
+                    msg->setType(msg, "warning");
                 }
                 break;
             case 'p':
             case 'P':
                 if (page <= total && page > 1) {
                     page--;
+                } else {
+                    msg->setMessage(msg, "\t已经是第一页,没有更多的数据!");
+                    msg->setType(msg, "warning");
                 }
                 break;
             default:
-                printError("没有选项!请重新选择!");
-                usleep(100);
+                msg->setMessage(msg, "\t没有选项!请重新选择!");
+                msg->setType(msg, "error");
                 break;
         }
     }

@@ -240,3 +240,54 @@ int arr[10] = {0};
 按位异或`^`
 
 `<<`和`>>`
+
+## 前置class声明
+
+
+
+## 文件操作
+
+### 文件分类
+
+按文件的逻辑结构：
+
+- 记录文件：由具有一定结构的记录组成（定长和不定长）
+- 流式文件：
+- 普通文件：
+- 设备文件：
+- 文本文件：ASCII文件，每个字节存放一个字符的ASCII码
+- 二进制文件：数据按在内存中的存储形式原样存放
+
+### 文件处理方法
+
+- 缓冲文件系统
+- 非缓冲文件系统
+
+### 文件类型指针
+
+```c
+FILE *fopen(char *name, char *mode);
+// 
+int fclose(FILE *fp);
+```
+
+对buffer读取操作
+
+```c
+size_t fread(void *buffer, size_t size, size_t count, FILE *fp);
+
+size_t fwrite(void *buffer, size_t size, size_t count, FILE *fp);
+// 一般用于二进制文件的输入输出
+```
+
+### 文件定位
+
+```c
+void rewind(FILE *fp);
+// 重置文件位置到开头
+int fseek(FILE *fp, long offset, int whence);
+// 改变文件位置
+int ferror(FILE *fp);
+// 报错的文件，将会被锁住，需要调用clearerr进行清除错误标识
+```
+

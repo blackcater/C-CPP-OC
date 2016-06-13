@@ -43,5 +43,7 @@ Student * createStudent(char *std_id,
                         ushort age,
                         ushort gender);
 
+ushort free_student(Student *);
+
 
 #endif /* student_h */

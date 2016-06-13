@@ -98,3 +98,16 @@ Student * createStudent(char *std_id,
         return NULL;
     }
 }
+
+/**
+ *  释放学生信息空间
+ *
+ *  @param student 学生指针
+ *
+ *  @return 1表示释放成功
+ */
+ushort free_student(Student *student)
+{
+    free(student);
+    return 1;
+}

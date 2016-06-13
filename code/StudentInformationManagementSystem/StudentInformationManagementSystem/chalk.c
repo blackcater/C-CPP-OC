@@ -325,7 +325,7 @@ ushort printlnError(char *message)
     chalk->setForecolor(chalk, "red");
     chalk->setHighlight(chalk, 1);
     chalk->setInvert(chalk, 1);
-    return chalk->print(chalk, message, 0);
+    return chalk->print(chalk, message, 1);
 }
 
 
