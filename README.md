@@ -37,8 +37,11 @@ chalk->print(chalk, message); // 打印输出
 
 基于纯C，面向过程实现，完成进度`40%`
 
-![show1-1](./note/_image/show2-1.png)
+![show2-1](./note/_image/show2-1.png)
 
 
 
-![show1-1](./note/_image/show2-2.png)
+![show2-2](./note/_image/show2-2.png)
+
+
+![show2-3](./note/_image/show2-3.png)
