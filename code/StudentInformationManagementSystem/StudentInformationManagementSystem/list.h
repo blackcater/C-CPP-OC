@@ -27,6 +27,7 @@ struct list {
     ushort (*del)(struct list *, char *);
     ushort (*upd)(struct list *, char *, Student *);
     ushort (*size)(struct list *);
+    ushort (*contain)(struct list *, char *);
     struct node *(*search)(struct list *, char *);
 };
 

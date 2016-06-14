@@ -39,7 +39,7 @@ void init(Message *msg)
     msg->printMessage(msg);
     printSysMenu();
 }
-
+#if 0
 List *initData()
 {
     List *tmp = createList(NULL);
@@ -59,11 +59,12 @@ List *initData()
     tmp->add(tmp, createNode(createStudent("20135072", "Xuan", "Beijing,China", 27, 1)));
     return tmp;
 }
+#endif
 
 void start()
 {
-//    List *list = createList(NULL);
-    List *list = initData();
+//    List *list = initData();
+    List *list = createList(NULL);
     Message *msg = createMessage(NULL, NULL);
     char choose[10];
     while (TRUE) {
@@ -90,10 +91,16 @@ void start()
                 }
                 break;
             case '3':
-                //TODO: function_c3
+                if (function_c3(list)) {
+                    msg->setMessage(msg, "\t学生修改成功!");
+                    msg->setType(msg, "success");
+                } else {
+                    msg->setMessage(msg, "\t学生修改取消!");
+                    msg->setType(msg, "warning");
+                }
                 break;
             case '4':
-                //TODO: function_c4
+                function_c4(list);
                 break;
             case '5':
                 function_c5(list);

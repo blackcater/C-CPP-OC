@@ -46,14 +46,14 @@ Node *createNode(Student *data)
  */
 ushort add_list(List *list, Node *node)
 {
+    
     if (list != NULL) {
+        // 学生已经存在就返回
+        if (list->contain(list, node->data->std_id)) {
+            return 2;
+        }
         Node *origin = list->head;
-        while(origin->next != NULL) {
-            Node *curr = origin->next;
-            Student *student = curr->data;
-            if (strcmp(student->std_id, node->data->std_id) == 0) {
-                return 2;
-            }
+        while(origin->next != NULL) {;
             origin = origin->next;
         }
         origin->next = node;
@@ -61,6 +61,33 @@ ushort add_list(List *list, Node *node)
     } else {
         return FALSE;
     }
+}
+
+/**
+ *  <#Description#>
+ *
+ *  @param list <#list description#>
+ *  @param str  <#str description#>
+ *
+ *  @return <#return value description#>
+ */
+ushort contain_list(List *list, char *str) {
+    if (list != NULL) {
+        Node *origin = list->head;
+        while(origin->next != NULL) {
+            Node *curr = origin->next;
+            Student *student = curr->data;
+            if (strcmp(student->std_id, str) == 0) {
+                // 表示返回同名学生问题
+                return TRUE;
+            }
+            origin = origin->next;
+        }
+        return FALSE;
+    } else {
+        return FALSE;
+    }
+
 }
 
 /**
@@ -184,12 +211,13 @@ ushort size_list(List *list)
  */
 List *createList(Node *head)
 {
-    List *tmp   = (List *)malloc(sizeof(List));
-    tmp->add    = &add_list;
-    tmp->del    = &del_list;
-    tmp->upd    = &upd_list;
-    tmp->size   = &size_list;
-    tmp->search = &search_list;
+    List *tmp    = (List *)malloc(sizeof(List));
+    tmp->add     = &add_list;
+    tmp->del     = &del_list;
+    tmp->upd     = &upd_list;
+    tmp->size    = &size_list;
+    tmp->search  = &search_list;
+    tmp->contain = &contain_list;
     if (head != NULL) {
         tmp->head = head;
     } else {
@@ -221,11 +249,11 @@ ushort free_node(Node *node)
  */
 ushort free_list(List *list)
 {
-    Node *head = list->head;
-    Node *curr = NULL;
-    while ((curr = head->next) != NULL) {
-        free(curr);
-        head = head->next;
+    Node *origin = list->head;
+    while ((origin->next) != NULL) {
+        Node *curr = origin->next;
+        origin = origin->next;
+        free_node(curr);
     }
     free(list->head);
     free(list);

@@ -1,13 +1,13 @@
 //
-//  fucntion_c6.h
+//  function_c4.h
 //  StudentInformationManagementSystem
 //
-//  Created by blackcater on 16/6/13.
+//  Created by blackcater on 16/6/14.
 //  Copyright © 2016年 blackcater. All rights reserved.
 //
 
-#ifndef fucntion_c6_h
-#define fucntion_c6_h
+#ifndef function_c4_h
+#define function_c4_h
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,9 +16,8 @@
 #include "chalk.h"
 #include "list.h"
 #include "message.h"
+#include "function_c7.h"
 
-ushort function_c6(List *);
+void function_c4(List *);
 
-ushort printCompletionStudentInfo(Student *, Student *);
-
-#endif /* fucntion_c6_h */
+#endif /* function_c4_h */

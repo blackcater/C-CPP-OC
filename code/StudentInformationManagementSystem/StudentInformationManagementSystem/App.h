@@ -17,6 +17,8 @@
 #include "message.h"
 #include "function_c1.h"
 #include "function_c2.h"
+#include "function_c3.h"
+#include "function_c4.h"
 #include "function_c5.h"
 #include "fucntion_c6.h"
 #include "function_c7.h"

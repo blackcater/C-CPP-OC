@@ -19,4 +19,6 @@
 
 ushort function_c7(List *);
 
+ushort saveStudentInfoToFile(List *list, FILE *file);
+
 #endif /* function_c7_h */

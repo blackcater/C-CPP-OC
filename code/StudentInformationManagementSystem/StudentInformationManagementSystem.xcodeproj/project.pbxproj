@@ -18,6 +18,8 @@
 		7BB2433F1D0BFFCC00CA2A79 /* chalk.c in Sources */ = {isa = PBXBuildFile; fileRef = 7BB2433D1D0BFFCC00CA2A79 /* chalk.c */; };
 		7BB243431D0BFFE000CA2A79 /* student.c in Sources */ = {isa = PBXBuildFile; fileRef = 7BB243411D0BFFE000CA2A79 /* student.c */; };
 		7BB243461D0C000000CA2A79 /* list.c in Sources */ = {isa = PBXBuildFile; fileRef = 7BB243441D0C000000CA2A79 /* list.c */; };
+		7BBDA3651D102FFC00DA5B8B /* function_c3.c in Sources */ = {isa = PBXBuildFile; fileRef = 7BBDA3631D102FFC00DA5B8B /* function_c3.c */; };
+		7BBDA3681D10300400DA5B8B /* function_c4.c in Sources */ = {isa = PBXBuildFile; fileRef = 7BBDA3661D10300400DA5B8B /* function_c4.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +57,10 @@
 		7BB243421D0BFFE000CA2A79 /* student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = student.h; sourceTree = "<group>"; };
 		7BB243441D0C000000CA2A79 /* list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = list.c; sourceTree = "<group>"; };
 		7BB243451D0C000000CA2A79 /* list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = list.h; sourceTree = "<group>"; };
+		7BBDA3631D102FFC00DA5B8B /* function_c3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = function_c3.c; sourceTree = "<group>"; };
+		7BBDA3641D102FFC00DA5B8B /* function_c3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = function_c3.h; sourceTree = "<group>"; };
+		7BBDA3661D10300400DA5B8B /* function_c4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = function_c4.c; sourceTree = "<group>"; };
+		7BBDA3671D10300400DA5B8B /* function_c4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = function_c4.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,10 @@
 				7B325D521D0ED8100077869C /* function_c7.h */,
 				7B325D541D0ED8200077869C /* fucntion_c6.c */,
 				7B325D551D0ED8200077869C /* fucntion_c6.h */,
+				7BBDA3631D102FFC00DA5B8B /* function_c3.c */,
+				7BBDA3641D102FFC00DA5B8B /* function_c3.h */,
+				7BBDA3661D10300400DA5B8B /* function_c4.c */,
+				7BBDA3671D10300400DA5B8B /* function_c4.h */,
 			);
 			name = functions;
 			sourceTree = "<group>";
@@ -185,10 +195,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B325D4A1D0E75830077869C /* message.c in Sources */,
+				7BBDA3651D102FFC00DA5B8B /* function_c3.c in Sources */,
 				7B325D4D1D0E8F8E0077869C /* function_c2.c in Sources */,
 				7B64E1B61D0CE9F3005E2595 /* App.c in Sources */,
 				7BB243361D0BFED100CA2A79 /* main.c in Sources */,
 				7B325D3E1D0D9FAD0077869C /* function_c5.c in Sources */,
+				7BBDA3681D10300400DA5B8B /* function_c4.c in Sources */,
 				7B325D411D0E31FF0077869C /* function_c1.c in Sources */,
 				7B325D531D0ED8100077869C /* function_c7.c in Sources */,
 				7B325D561D0ED8200077869C /* fucntion_c6.c in Sources */,

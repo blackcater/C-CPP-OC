@@ -19,4 +19,6 @@
 
 void function_c1(List *);
 
+Student *getStudentInfoFromConsole();
+
 #endif /* function_c1_h */
