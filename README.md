@@ -6,6 +6,10 @@
     |
     |----StudentInfomationManagementSystem
     |
+    |----SimpleDemo // 简单的一些属性之类设置
+    |
+    |----LoginDemo // 界面切换
+    |
 ----note
     |
     |----1-1 C复习.md(c语言学习笔记)
