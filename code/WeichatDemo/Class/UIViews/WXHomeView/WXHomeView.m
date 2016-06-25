@@ -7,7 +7,6 @@
 //
 
 #import "WXHomeView.h"
-#import "PublicDefine.h"
 
 @implementation WXHomeView
 

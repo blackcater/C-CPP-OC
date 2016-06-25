@@ -9,6 +9,8 @@
     |----SimpleDemo // 简单的一些属性之类设置
     |
     |----LoginDemo // 界面切换
+    | 
+    |----WeichatDemo // 微信模仿， 新功能介绍页和登录页面
     |
 ----note
     |
@@ -47,5 +49,13 @@ chalk->print(chalk, message); // 打印输出
 
 ![show2-2](./note/_image/show2-2.png)
 
-
 ![show2-3](./note/_image/show2-3.png)
+
+## 微信模仿
+
+![sss-1](note/_image/sss-1.png)
+
+![sss-2](note/_image/sss-2.png)
+
+
+

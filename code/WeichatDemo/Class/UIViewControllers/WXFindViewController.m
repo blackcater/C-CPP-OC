@@ -18,7 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationController.title = @"发现";
+    self.title = @"发现";
+    UIImage *navigationBarImg = [UIImage imageNamed:@"bar.png"];
+    [self.navigationController.navigationBar setBackgroundImage:navigationBarImg forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
 }
 
 - (void)didReceiveMemoryWarning {

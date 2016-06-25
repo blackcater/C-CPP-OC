@@ -19,8 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationController.title = @"微信";
+//    self.navigationController.title = @"微信";
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     self.title = @"微信";
+    UIImage *navigationBarImg = [UIImage imageNamed:@"bar.png"];
+    [self.navigationController.navigationBar setBackgroundImage:navigationBarImg forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
 }
 
 - (void)didReceiveMemoryWarning {

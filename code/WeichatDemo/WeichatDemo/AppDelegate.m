@@ -9,8 +9,7 @@
 
 #import "AppDelegate.h"
 #import "WXLoginViewController.h"
-#import "WXLoginView.h"
-
+#import "WXIntroduceView.h"
 
 @interface AppDelegate ()
 
@@ -40,6 +39,16 @@
 
     [self.window makeKeyAndVisible];
 
+    WXIntroduceView *introduceView = [[WXIntroduceView alloc] init];
+
+    // 如果是第一次启动 , 就显示
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL first_loaded = [[userDefaults objectForKey:@"FIRST_LOADED"] boolValue];
+
+    if (!first_loaded) {
+        [userDefaults setBool:YES forKey:@"FIRST_LOADED"];
+        [self.window addSubview:introduceView];
+    }
 
     return YES;
 }

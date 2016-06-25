@@ -7,7 +7,6 @@
 //
 
 #import "WXMineView.h"
-#import "PublicDefine.h"
 
 @implementation WXMineView
 

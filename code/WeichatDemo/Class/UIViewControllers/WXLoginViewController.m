@@ -38,7 +38,6 @@
     // 监听事件
     [self.loginView.passwordTextField addTarget:self action:@selector(passwordCheckedHandler:) forControlEvents:UIControlEventEditingChanged];
     [self.loginView.loginBtn addTarget:self action:@selector(loginBtnClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-
 }
 
 - (void)passwordCheckedHandler:(id)sender {
@@ -61,26 +60,31 @@
 //            [home pushViewController:homeC animated:YES];
             homeC.title = @"微信";
             home.tabBarItem.title = @"微信";
+//            home.tabBarItem.image = [UIImage imageNamed:@"video_next_button_disabled@2x.png"];
+//            home.tabBarItem.selectedImage = [UIImage imageNamed:@"video_next_button@2x.png"];
 
             UIViewController *contactC = [[WXContactViewController alloc] init];
-            UINavigationController *contact = [[UINavigationController alloc] init];
-            [contact pushViewController:contactC animated:YES];
+            UINavigationController *contact = [[UINavigationController alloc] initWithRootViewController:contactC];
+//            [contact pushViewController:contactC animated:YES];
             contactC.title = @"通讯录";
             contact.tabBarItem.title = @"通讯录";
 
             UIViewController *findC = [[WXFindViewController alloc] init];
-            UINavigationController *find = [[UINavigationController alloc] init];
-            [find pushViewController:findC animated:YES];
+            UINavigationController *find = [[UINavigationController alloc] initWithRootViewController:findC];
+//            [find pushViewController:findC animated:YES];
             findC.title = @"发现";
             find.tabBarItem.title = @"发现";
+            find.tabBarItem.badgeValue = @"new";
+            find.tabBarItem.image = [UIImage imageNamed:@"userinfo_tabicon_search@2x.png"];
+            find.tabBarItem.selectedImage = [[UIImage imageNamed:@"userinfo_tabicon_search_highlighted@2x.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
             UIViewController *mineC = [[WXMineViewController alloc] init];
-            UINavigationController *mine = [[UINavigationController alloc] init];
-            [mine pushViewController:mineC animated:YES];
+            UINavigationController *mine = [[UINavigationController alloc] initWithRootViewController:mineC];
+//            [mine pushViewController:mineC animated:YES];
             mineC.title = @"我";
             mine.tabBarItem.title = @"我";
 
-            NSArray *viewControllers = @[homeC, contactC, findC, mineC];
+            NSArray *viewControllers = @[home, contact, find, mine];
 
 //            tabBarController.tabBarItem
 

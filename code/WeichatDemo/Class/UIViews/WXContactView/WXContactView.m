@@ -7,7 +7,6 @@
 //
 
 #import "WXContactView.h"
-#import "PublicDefine.h"
 
 @implementation WXContactView
 

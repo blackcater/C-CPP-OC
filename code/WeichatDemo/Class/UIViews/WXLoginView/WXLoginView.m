@@ -7,7 +7,6 @@
 //
 
 #import "WXLoginView.h"
-#import "PublicDefine.h"
 
 @interface WXLoginView()
 
@@ -54,6 +53,7 @@
         _passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(110, CGRectGetMaxY(self.phoneLabel.frame)+20, SCREEN_WIDTH-150, 30)];
         _passwordTextField.placeholder = @"请填写密码";
         _passwordTextField.secureTextEntry = YES;
+        _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     }
 
     return _passwordTextField;
