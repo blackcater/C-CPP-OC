@@ -51,11 +51,17 @@ chalk->print(chalk, message); // 打印输出
 
 ![show2-3](./note/_image/show2-3.png)
 
-## 微信模仿
+## 界面仿制
+
+### 微信模仿(精简)
 
 ![sss-1](note/_image/sss-1.png)
 
 ![sss-2](note/_image/sss-2.png)
 
 
+
+### 网易云(抽象)
+
+![show3-1](note/_image/show3-1.png)
 
